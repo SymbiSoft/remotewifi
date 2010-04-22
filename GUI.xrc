@@ -1,0 +1,136 @@
+<?xml version="1.0" ?>
+<resource>
+  <object class="wxFrame" name="wxMainFrame">
+    <object class="wxBoxSizer">
+      <orient>wxVERTICAL</orient>
+      <object class="sizeritem">
+        <object class="wxPanel">
+          <object class="wxBoxSizer">
+            <orient>wxVERTICAL</orient>
+            <object class="sizeritem">
+              <object class="wxStaticText">
+                <label>Target application</label>
+              </object>
+              <flag>wxALL|wxEXPAND|wxALIGN_CENTRE_VERTICAL|wxALIGN_CENTRE_HORIZONTAL</flag>
+            </object>
+            <object class="sizeritem">
+              <object class="wxComboBox" name="wxSelectTargetCombo">
+                <content>
+                  <item>smplayer</item>
+                </content>
+                <selection>0</selection>
+                <XRCED>
+                  <assign_var>1</assign_var>
+                </XRCED>
+              </object>
+              <flag>wxALL|wxEXPAND|wxALIGN_CENTRE_VERTICAL|wxALIGN_CENTRE_HORIZONTAL</flag>
+            </object>
+            <object class="sizeritem">
+              <object class="wxComboBox" name="wxMediaFileCombo">
+                <content>
+                  <item>C:\lixo\Low_Energy_Demo.WMV</item>
+                </content>
+                <selection>0</selection>
+                <XRCED>
+                  <assign_var>1</assign_var>
+                </XRCED>
+              </object>
+              <flag>wxEXPAND|wxALIGN_CENTRE_VERTICAL|wxALIGN_CENTRE_HORIZONTAL</flag>
+            </object>
+            <object class="sizeritem">
+              <object class="wxBoxSizer">
+                <object class="sizeritem">
+                  <object class="wxBitmapButton" name="wxOpenTargetButton">
+                    <bitmap stock_id="wxART_FILE_OPEN"/>
+                    <XRCED>
+                      <events>EVT_BUTTON</events>
+                    </XRCED>
+                  </object>
+                </object>
+                <object class="sizeritem">
+                  <object class="wxBitmapButton" name="wxPlayTargetButton">
+                    <bitmap stock_id="wxART_GO_FORWARD"/>
+                    <XRCED>
+                      <events>EVT_BUTTON</events>
+                    </XRCED>
+                  </object>
+                </object>
+                <object class="sizeritem">
+                  <object class="wxBitmapButton" name="wxFullscreenTargetButton">
+                    <bitmap stock_id="wxART_LIST_VIEW"/>
+                    <XRCED>
+                      <events>EVT_BUTTON</events>
+                    </XRCED>
+                  </object>
+                </object>
+                <orient>wxHORIZONTAL</orient>
+              </object>
+              <flag>wxEXPAND|wxALIGN_CENTRE_VERTICAL|wxALIGN_CENTRE_HORIZONTAL</flag>
+            </object>
+            <object class="sizeritem">
+              <object class="wxStaticBoxSizer">
+                <object class="sizeritem">
+                  <object class="wxStaticText">
+                    <label>Server IP:</label>
+                  </object>
+                </object>
+                <object class="sizeritem">
+                  <object class="wxTextCtrl" name="wxIPTextctrl">
+                    <value>127.0.0.1</value>
+                    <XRCED>
+                      <assign_var>1</assign_var>
+                    </XRCED>
+                  </object>
+                  <flag>wxEXPAND|wxALIGN_CENTRE_VERTICAL|wxALIGN_CENTRE_HORIZONTAL</flag>
+                </object>
+                <object class="sizeritem">
+                  <object class="wxStaticText">
+                    <label>Server Port:</label>
+                  </object>
+                </object>
+                <object class="sizeritem">
+                  <object class="wxTextCtrl" name="wxPortTextctrl">
+                    <value>54666</value>
+                    <XRCED>
+                      <assign_var>1</assign_var>
+                    </XRCED>
+                  </object>
+                  <flag>wxALL|wxEXPAND|wxALIGN_CENTRE_VERTICAL|wxALIGN_CENTRE_HORIZONTAL</flag>
+                </object>
+                <object class="sizeritem">
+                  <object class="wxBoxSizer">
+                    <orient>wxHORIZONTAL</orient>
+                    <object class="sizeritem">
+                      <object class="wxBitmapButton" name="wxServerStartButton">
+                        <bitmap stock_id="wxART_GO_HOME"/>
+                        <XRCED>
+                          <events>EVT_BUTTON</events>
+                        </XRCED>
+                      </object>
+                    </object>
+                    <object class="sizeritem">
+                      <object class="wxBitmapButton" name="wxServerStopButton">
+                        <bitmap stock_id="wxART_CROSS_MARK"/>
+                        <XRCED>
+                          <events>EVT_BUTTON</events>
+                        </XRCED>
+                      </object>
+                    </object>
+                  </object>
+                </object>
+                <label>TCP/IP server</label>
+                <orient>wxVERTICAL</orient>
+              </object>
+              <flag>wxALL|wxEXPAND|wxALIGN_CENTRE_VERTICAL|wxALIGN_CENTRE_HORIZONTAL</flag>
+            </object>
+          </object>
+        </object>
+        <option>1</option>
+        <flag>wxALL|wxEXPAND|wxALIGN_CENTRE_VERTICAL|wxALIGN_CENTRE_HORIZONTAL</flag>
+        <minsize>300,-1</minsize>
+      </object>
+    </object>
+    <title>Remote Wifi</title>
+    <centered>1</centered>
+  </object>
+</resource>
