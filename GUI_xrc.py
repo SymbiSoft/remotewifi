@@ -41,11 +41,26 @@ class xrcwxMainFrame(wx.Frame):
         self.wxIPTextctrl = xrc.XRCCTRL(self, "wxIPTextctrl")
         self.wxPortTextctrl = xrc.XRCCTRL(self, "wxPortTextctrl")
 
+        self.Bind(wx.EVT_BUTTON, self.OnButton_wxSelectTargetPathButton, id=xrc.XRCID('wxSelectTargetPathButton'))
+        self.Bind(wx.EVT_BUTTON, self.OnButton_wxSelectMediaPathButton, id=xrc.XRCID('wxSelectMediaPathButton'))
         self.Bind(wx.EVT_BUTTON, self.OnButton_wxOpenTargetButton, id=xrc.XRCID('wxOpenTargetButton'))
         self.Bind(wx.EVT_BUTTON, self.OnButton_wxPlayTargetButton, id=xrc.XRCID('wxPlayTargetButton'))
+        self.Bind(wx.EVT_BUTTON, self.OnButton_wxPauseButton, id=xrc.XRCID('wxPauseButton'))
         self.Bind(wx.EVT_BUTTON, self.OnButton_wxFullscreenTargetButton, id=xrc.XRCID('wxFullscreenTargetButton'))
         self.Bind(wx.EVT_BUTTON, self.OnButton_wxServerStartButton, id=xrc.XRCID('wxServerStartButton'))
         self.Bind(wx.EVT_BUTTON, self.OnButton_wxServerStopButton, id=xrc.XRCID('wxServerStopButton'))
+
+#!XRCED:begin-block:xrcwxMainFrame.OnButton_wxSelectTargetPathButton
+    def OnButton_wxSelectTargetPathButton(self, evt):
+        # Replace with event handler code
+        print "OnButton_wxSelectTargetPathButton()"
+#!XRCED:end-block:xrcwxMainFrame.OnButton_wxSelectTargetPathButton        
+
+#!XRCED:begin-block:xrcwxMainFrame.OnButton_wxSelectMediaPathButton
+    def OnButton_wxSelectMediaPathButton(self, evt):
+        # Replace with event handler code
+        print "OnButton_wxSelectMediaPathButton()"
+#!XRCED:end-block:xrcwxMainFrame.OnButton_wxSelectMediaPathButton        
 
 #!XRCED:begin-block:xrcwxMainFrame.OnButton_wxOpenTargetButton
     def OnButton_wxOpenTargetButton(self, evt):
@@ -58,6 +73,12 @@ class xrcwxMainFrame(wx.Frame):
         # Replace with event handler code
         print "OnButton_wxPlayTargetButton()"
 #!XRCED:end-block:xrcwxMainFrame.OnButton_wxPlayTargetButton        
+
+#!XRCED:begin-block:xrcwxMainFrame.OnButton_wxPauseButton
+    def OnButton_wxPauseButton(self, evt):
+        # Replace with event handler code
+        print "OnButton_wxPauseButton()"
+#!XRCED:end-block:xrcwxMainFrame.OnButton_wxPauseButton        
 
 #!XRCED:begin-block:xrcwxMainFrame.OnButton_wxFullscreenTargetButton
     def OnButton_wxFullscreenTargetButton(self, evt):
