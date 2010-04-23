@@ -23,46 +23,85 @@ class MyApp():
         #appuifw.app.screen= "full"
         #appuifw.app.screen= "large"
         appuifw.app.screen= "normal"
-        #self.bc = appuifw.Canvas(redraw_callback=self.redraw)
-        appuifw.app.menu = [(u"About", self.about),(u"Exit", self.quit)]
-        self.body = appuifw.Text()
-        appuifw.app.body = self.body
-        #appuifw.app.orientation = 'portrait'
         appuifw.app.exit_key_handler= self.quit
+        appuifw.app.menu = [(u"About", self.about),(u"Exit", self.quit)]
+        #Canvas TAB
+        #self.bc = appuifw.Canvas(redraw_callback=self.redraw)
+        #List box intens
+        #Create a list of items to be displayed (Unicode strings)
+        self.listbox_items = [u"Server", u"Connect", u"Info", u"Exit"]
+        #TAB stile application
+        self.tab1 = appuifw.Text(u"Console")
+        self.tab2 = appuifw.Listbox(self.listbox_items, self.handle_listbox)
+        self.tab3 = appuifw.Text(u"Remote")
+        appuifw.app.set_tabs([u"Console", u"Config", u"Remote"], self.handle_tab)
+        appuifw.app.body = self.tab1
+        #appuifw.app.orientation = 'portrait'
         appuifw.app.directional_pad = True
-        self.body.add(u"Starting server.\n")
         apid = socket.select_access_point()
         self.apo = socket.access_point(apid)
         socket.set_default_access_point(self.apo)
-        self.apo.start()
-        self.body.add(u"AP IP: %s\n"%self.apo.ip())
-        self.port = 54321
-        #self.server(self.apo.ip(),self.port)
+        self.Server_IP = '192.168.161.97'
+        self.Server_port = 54321
+        self.tab3.add(u"--------------\nRemote Wifi\n--------------\n")
+        #self.server(self.apo.ip(),self.Server_port)
         a_url = "http://ddeserver.smar.com.br"
         #f = urllib.urlopen(a_url)
         #self.body.add(u"Fetching url: %s\n"%a_url)
         #d = f.read()
         #f.close()    
-        data = "testando"    
-        self.client('192.168.2.3',56666,data)
-        self.apo.stop()
-        self.body.add(u"Close connection\n")
     def client(self,ip,port,data):
         s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
         try:
             s.connect((ip,port))
         except socket.error, (val,msg):
-            self.body.add(u"Error %d: %s" % (val,msg) + "\n")
+            self.tab1.add(u"Error %d: %s" % (val,msg) + "\n")
             return
         size = len(data)
-        self.body.add(u"Sending %s (%d bytes)" % (data,size) + "\n")            
+        self.tab1.add(u"Sending %s (%d bytes)" % (data,size) + "\n")            
         #header = "%s\n" % (data) + struct.pack(">L",size) + "\n"
         s.sendall(data)
         s.close()
-            
+    def handle_tab(self,index):
+    	#Switch to the tab according to index
+    	if(index==0):
+    		appuifw.app.body = self.tab1
+    	if(index==1):
+    		appuifw.app.body = self.tab2
+    	if(index==2):
+    		appuifw.app.body = self.tab3  
+    def handle_listbox(self):
+        if self.listbox_items[self.tab2.current()] == u'Server':
+            data = appuifw.query(u"Enter server IP:","text",u"192.168.2.3") 
+            if len(data) > 8:
+                self.Server_IP = data
+            data = appuifw.query(u"Enter server port:","number",56666)
+            if data > 0 and data < 65000:                 
+                self.Server_port = data 
+        elif self.listbox_items[self.tab2.current()] == u'Exit':
+            self.quit()
+            #appuifw.note(items[lb.current()][0] + u" has been selected.", 'info')
+        elif self.listbox_items[self.tab2.current()] == u"Info":
+            appuifw.app.body = self.tab1
+            self.apo.start()            
+            self.tab1.add(u"AP IP: %s\n"%self.apo.ip())
+            self.apo.stop()                        
+        elif self.listbox_items[self.tab2.current()] == u"Connect":
+            appuifw.app.body = self.tab1
+            self.tab1.add(u"Starting server.\n")
+            self.apo.start()
+            data = "testando"    
+            self.client(self.Server_IP,self.Server_port,data)
+            self.apo.stop()            
+            self.tab1.add(u"Close connection\n")
+    def custom_redraw(self,rect):
+        self.bc.clear()  
+        self.bc.text( (10,50) , u"Remote Wifi" , 0x010F01 , u"Series 60 Sans" )                        
     def about(self):
         appuifw.note(u"Remote Wifi by Rogerio Bulha (rbulha@gmail.com)","info")
     def quit(self):
+        #Remove tabs and their handler function
+        appuifw.app.set_tabs([], None)
         self.app_lock.signal()
         # enable this in the final application
         #appuifw.app.set_exit()
