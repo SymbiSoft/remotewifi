@@ -14,31 +14,68 @@
               <flag>wxALL|wxEXPAND|wxALIGN_CENTRE_VERTICAL|wxALIGN_CENTRE_HORIZONTAL</flag>
             </object>
             <object class="sizeritem">
-              <object class="wxComboBox" name="wxSelectTargetCombo">
-                <content>
-                  <item>smplayer</item>
-                </content>
-                <selection>0</selection>
-                <XRCED>
-                  <assign_var>1</assign_var>
-                </XRCED>
-              </object>
-              <flag>wxALL|wxEXPAND|wxALIGN_CENTRE_VERTICAL|wxALIGN_CENTRE_HORIZONTAL</flag>
-            </object>
-            <object class="sizeritem">
-              <object class="wxComboBox" name="wxMediaFileCombo">
-                <content>
-                  <item>C:\lixo\Low_Energy_Demo.WMV</item>
-                </content>
-                <selection>0</selection>
-                <XRCED>
-                  <assign_var>1</assign_var>
-                </XRCED>
+              <object class="wxBoxSizer">
+                <object class="sizeritem">
+                  <object class="wxComboBox" name="wxSelectTargetCombo">
+                    <content>
+                      <item>C:\Arquivos de programas\SMPlayer\smplayer.exe</item>
+                      <item>I:\Arquivos de programas\SMPlayer\smplayer.exe</item>
+                    </content>
+                    <selection>0</selection>
+                    <XRCED>
+                      <assign_var>1</assign_var>
+                    </XRCED>
+                  </object>
+                  <option>1</option>
+                  <flag>wxALL|wxEXPAND|wxALIGN_CENTRE_VERTICAL|wxALIGN_CENTRE_HORIZONTAL</flag>
+                </object>
+                <object class="sizeritem">
+                  <object class="wxBitmapButton" name="wxSelectTargetPathButton">
+                    <bitmap stock_id="wxART_FOLDER_OPEN"/>
+                    <XRCED>
+                      <events>EVT_BUTTON</events>
+                    </XRCED>
+                  </object>
+                </object>
+                <orient>wxHORIZONTAL</orient>
               </object>
               <flag>wxEXPAND|wxALIGN_CENTRE_VERTICAL|wxALIGN_CENTRE_HORIZONTAL</flag>
             </object>
+            
             <object class="sizeritem">
               <object class="wxBoxSizer">
+                <object class="sizeritem">
+                  <object class="wxComboBox" name="wxMediaFileCombo">
+                    <content>
+                      <item>C:\lixo\Low_Energy_Demo.WMV</item>
+                      <item>G:\VIDEOS\DESENHOS\Hulk.vs.Wolverine.2008.DVDRiP.XviD-WaLMaRT.rmvb</item>
+                      <item>G:\VIDEOS\DESENHOS\Futurama.Benders.Game.2008.DVDRiP.XViD-DOMiNO.rmvb</item>
+                    </content>
+                    <selection>0</selection>
+                    <style>wxCB_DROPDOWN</style>
+                    <XRCED>
+                      <assign_var>1</assign_var>
+                    </XRCED>
+                  </object>
+                  <option>1</option>
+                  <flag>wxALL|wxEXPAND|wxALIGN_CENTRE_VERTICAL|wxALIGN_CENTRE_HORIZONTAL</flag>
+                  <minsize>250,-1</minsize>
+                </object>
+                <object class="sizeritem">
+                  <object class="wxBitmapButton" name="wxSelectMediaPathButton">
+                    <bitmap stock_id="wxART_FOLDER_OPEN"/>
+                    <XRCED>
+                      <events>EVT_BUTTON</events>
+                    </XRCED>
+                  </object>
+                  <flag>wxEXPAND|wxALIGN_CENTRE_VERTICAL|wxALIGN_CENTRE_HORIZONTAL</flag>
+                </object>
+                <orient>wxHORIZONTAL</orient>
+              </object>
+              <flag>wxEXPAND|wxGROW|wxALIGN_CENTRE_VERTICAL|wxALIGN_CENTRE_HORIZONTAL</flag>
+            </object>
+            <object class="sizeritem">
+              <object class="wxBoxSizer" name="wxPauseButton">
                 <object class="sizeritem">
                   <object class="wxBitmapButton" name="wxOpenTargetButton">
                     <bitmap stock_id="wxART_FILE_OPEN"/>
@@ -54,6 +91,15 @@
                       <events>EVT_BUTTON</events>
                     </XRCED>
                   </object>
+                </object>
+                <object class="sizeritem">
+                  <object class="wxBitmapButton" name="wxPauseButton">
+                    <bitmap stock_id="wxART_TIP"/>
+                    <XRCED>
+                      <events>EVT_BUTTON</events>
+                    </XRCED>
+                  </object>
+                  <flag>wxALL|wxALIGN_CENTRE_VERTICAL|wxALIGN_CENTRE_HORIZONTAL</flag>
                 </object>
                 <object class="sizeritem">
                   <object class="wxBitmapButton" name="wxFullscreenTargetButton">
@@ -76,7 +122,7 @@
                 </object>
                 <object class="sizeritem">
                   <object class="wxTextCtrl" name="wxIPTextctrl">
-                    <value>127.0.0.1</value>
+                    <value>192.168.2.3</value>
                     <XRCED>
                       <assign_var>1</assign_var>
                     </XRCED>
@@ -90,7 +136,7 @@
                 </object>
                 <object class="sizeritem">
                   <object class="wxTextCtrl" name="wxPortTextctrl">
-                    <value>54666</value>
+                    <value>56666</value>
                     <XRCED>
                       <assign_var>1</assign_var>
                     </XRCED>
