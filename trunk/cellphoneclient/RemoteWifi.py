@@ -42,9 +42,24 @@ class MyApp():
         #f = urllib.urlopen(a_url)
         #self.body.add(u"Fetching url: %s\n"%a_url)
         #d = f.read()
-        #f.close()        
+        #f.close()    
+        data = "testando"    
+        self.client('192.168.2.3',56666,data)
         self.apo.stop()
         self.body.add(u"Close connection\n")
+    def client(self,ip,port,data):
+        s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+        try:
+            s.connect((ip,port))
+        except socket.error, (val,msg):
+            self.body.add(u"Error %d: %s" % (val,msg) + "\n")
+            return
+        size = len(data)
+        self.body.add(u"Sending %s (%d bytes)" % (data,size) + "\n")            
+        #header = "%s\n" % (data) + struct.pack(">L",size) + "\n"
+        s.sendall(data)
+        s.close()
+            
     def about(self):
         appuifw.note(u"Remote Wifi by Rogerio Bulha (rbulha@gmail.com)","info")
     def quit(self):
