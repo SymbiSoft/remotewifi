@@ -29,12 +29,17 @@ class MyApp():
         #self.bc = appuifw.Canvas(redraw_callback=self.redraw)
         #List box intens
         #Create a list of items to be displayed (Unicode strings)
-        self.listbox_items = [u"Server", u"Connect", u"Info", u"Exit"]
+        icon1=appuifw.Icon(u"r2d2.mbm",48,48)
+        #self.listbox_items = [(u"Server",icon1), (u"Connect",icon1), (u"Info",icon1), (u"Exit",icon1)]
+        #self.listbox_items = [(u"Server",icon1)]
+        self.listbox_items = [u"Server",u"Connect",u"Info",u"Exit"]
         #TAB stile application
-        self.tab1 = appuifw.Text(u"Console")
+        self.tab1 = appuifw.Text(u"Console\n")
         self.tab2 = appuifw.Listbox(self.listbox_items, self.handle_listbox)
-        self.tab3 = appuifw.Text(u"Remote")
-        appuifw.app.set_tabs([u"Console", u"Config", u"Remote"], self.handle_tab)
+        self.tab3 = appuifw.Text(u"Remote\n")#appuifw.Canvas(redraw_callback=self.custom_redraw)#
+        #appuifw.app.set_tabs([u"Console", u"Config", u"Remote"], self.handle_tab)
+        appuifw.app.activate_tab(2)
+        appuifw.app.set_tabs([u"Console", u"Cfg", u"Remote"], self.handle_tab)
         appuifw.app.body = self.tab1
         #appuifw.app.orientation = 'portrait'
         appuifw.app.directional_pad = True
@@ -66,9 +71,9 @@ class MyApp():
     	#Switch to the tab according to index
     	if(index==0):
     		appuifw.app.body = self.tab1
-    	if(index==1):
+    	elif(index==1):
     		appuifw.app.body = self.tab2
-    	if(index==2):
+    	elif(index==2):
     		appuifw.app.body = self.tab3  
     def handle_listbox(self):
         if self.listbox_items[self.tab2.current()] == u'Server':
@@ -90,13 +95,14 @@ class MyApp():
             appuifw.app.body = self.tab1
             self.tab1.add(u"Starting server.\n")
             self.apo.start()
-            data = "testando"    
+            data = "Hello remotewifi"
             self.client(self.Server_IP,self.Server_port,data)
             self.apo.stop()            
             self.tab1.add(u"Close connection\n")
     def custom_redraw(self,rect):
-        self.bc.clear()  
-        self.bc.text( (10,50) , u"Remote Wifi" , 0x010F01 , u"Series 60 Sans" )                        
+        if appuifw.app.body == self.tab3:
+            self.bc.clear()
+            self.bc.text( (10,50) , u"Remote Wifi" , 0x010F01 , u"Series 60 Sans" )
     def about(self):
         appuifw.note(u"Remote Wifi by Rogerio Bulha (rbulha@gmail.com)","info")
     def quit(self):
