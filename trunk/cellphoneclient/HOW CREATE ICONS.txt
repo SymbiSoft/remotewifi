@@ -1,0 +1,19 @@
+PS: Para facilitar a conversão o aplicativo bmconv.exe será copiado para o diretório onde encontram-se os arquivos bitmaps a serem convertidos.
+
+   1. Cope o arquivo bmconv.exe (bitmap converter) que encontra-se no diretório diretório_do_sdk\Epoc32\tools\
+   2. Abra um prompt do ms-dos e acesse o diretório onde está o bmconv.
+   3. Digite: bmconv.exe /hnome-do-arquivo.mbg nome-do-arquivo.mbm [OPT]bmp_1 [OPT]bmp_2 [OPT]bmp_n 
+
+
+Onde:
+
+    * nome-do-arquivo.mbg - nome do arquivo .mbg que será gerado.
+    * nome-do-arquivo.mbm - nome do arquivo .mbm que será gerado.
+    * OPT - corresponde ao formato do bitmap, especificando bits per pixel e colorido/preto-e-branco. Default é preto-e-branco 2 bits. 
+
+Os arquivos .mbm e .mbg serão gerados na mesma pasta onde se encontra o bmconv.
+Exemplo
+
+bmconv.exe /hPersonagem_P1.mbg Personagem_P1.mbm /c24personagem_frente.bmp /c24personagem_costas.bmp /8personagem_capa.bmp 
+
+procurar bmconv.exe no google para baixá-lo
