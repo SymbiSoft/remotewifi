@@ -1,0 +1,1 @@
+First intention with this projetc is to control the SMPlayer  on my home computer using my cellphone nokia 5800.
